@@ -32,8 +32,6 @@ class QuizSerializer(serializers.ModelSerializer):
         model = Quiz
         fields = ['url', 'id', 'title', 'description', 'created',
                   'edited', 'questions', 'results']
-        # fields = ['url', 'id', 'title', 'description', 'created',
-        #           'edited', 'questions']
 
     def create(self, validated_data):
         questions_data = validated_data.pop('questions')
@@ -42,10 +40,8 @@ class QuizSerializer(serializers.ModelSerializer):
         for result_data in results_data:
             Result.objects.create(quiz=quiz, **result_data)
         for question_data in questions_data:
-            print(question_data)
             choices_data = question_data.pop('choices')
-            question=Question.objects.create(quiz=quiz, **question_data)
-            print(question)
+            question = Question.objects.create(quiz=quiz, **question_data)
             for choice_data in choices_data:
                 Choice.objects.create(question=question, **choice_data)
         return quiz
