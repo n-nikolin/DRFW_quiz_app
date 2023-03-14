@@ -44,7 +44,7 @@ class MyResultView(views.APIView):
         most_common_value = counter.most_common(3)[0][1]
         equals = []
         for k, v in counter.items():
-            if v==most_common_value:
+            if v == most_common_value:
                 equals.append(k)
         response = []
         for result in results:

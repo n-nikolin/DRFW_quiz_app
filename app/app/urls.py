@@ -10,6 +10,7 @@ router.register(r'quizzes', QuizViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # rewrite endpoint to "quizzes/{id}/result"
     path(r'my_result/', MyResultView.as_view()),
     path('', include(router.urls))
 ]

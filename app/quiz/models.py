@@ -3,7 +3,7 @@ from django.db import models
 class Quiz(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
-    created = models.DateTimeField(auto_now_add=False)
+    created = models.DateTimeField(auto_now_add=True)
     edited = models.DateTimeField(auto_now=True)
 
 class Question(models.Model):
